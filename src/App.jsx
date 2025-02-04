@@ -63,9 +63,6 @@ function App() {
   const addNewStreamer = async (newStreamer) => {
     //  -> REST 서버에 POST 호출 -> CREATE
     try {
-      // followerTrends 배열을 쉼표로 구분된 문자열로 변환
-      const followerTrendsText = newStreamer.followerTrends.join(",");
-
       const response = await fetch(apiStreamerUrl, {
         method: "POST",
         headers: {
@@ -73,7 +70,6 @@ function App() {
         },
         body: JSON.stringify({
           ...newStreamer,
-          followerTrends: followerTrendsText,
         }),
       });
       //  요청 결과 확인
